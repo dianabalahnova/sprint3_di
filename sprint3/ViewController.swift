@@ -21,7 +21,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var ScrollForChangingHistory: UIScrollView!
     
-    
     var score = 0 {
         didSet {
             updateScoreLabel()
@@ -36,18 +35,18 @@ class ViewController: UIViewController {
         score += 1
         now = Date()
         changingHistory.text += "\(dateFormeter.string(from: now)) значение изменено на +1 \n"
-        sizeMatchingTextAndScroll()
+        sizeMatchingForTextAndScroll()
     }
     
     @IBAction func minusScore(_ sender: Any) { if score > 0 {score -= 1
         now = Date()
         changingHistory.text += "\(dateFormeter.string(from: now)) значение изменено на -1 \n"
-        sizeMatchingTextAndScroll()
+        sizeMatchingForTextAndScroll()
     } else {
         score = 0
         now = Date()
         changingHistory.text += "\(dateFormeter.string(from: now)) попытка уменьшить значение счётчика ниже 0 \n"
-       sizeMatchingTextAndScroll()
+       sizeMatchingForTextAndScroll()
     }
        
     }
@@ -56,12 +55,12 @@ class ViewController: UIViewController {
     @IBAction func resetScore(_ sender: Any) { if score > 0 {
         score = 0
         now = Date()
-      sizeMatchingTextAndScroll()
+      sizeMatchingForTextAndScroll()
         
     }
         now = Date()
         changingHistory.text += "\(dateFormeter.string(from: now)) значение сброшено \n"
-        sizeMatchingTextAndScroll()
+        sizeMatchingForTextAndScroll()
     }
     
     
@@ -85,7 +84,7 @@ class ViewController: UIViewController {
         
     }
     
-    func sizeMatchingTextAndScroll() {
+    func sizeMatchingForTextAndScroll() {
         changingHistory.sizeToFit()
         ScrollForChangingHistory.contentSize = self.changingHistory.bounds.size
     }
